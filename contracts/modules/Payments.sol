@@ -57,7 +57,7 @@ abstract contract Payments is PaymentsImmutables {
     /// @param token The token to pay (can be ETH using Constants.ETH)
     /// @param recipient The address that will receive payment
     /// @param bips Portion in bips of whole balance of the contract
-    function payPortion(address token, address recipient, uint256 bips) internal override {
+    function payPortion(address token, address recipient, uint256 bips) internal virtual {
         if (bips == 0 || bips > FEE_BIPS_BASE) revert InvalidBips();
         if (token == Constants.ETH) {
             uint256 balance = address(this).balance;

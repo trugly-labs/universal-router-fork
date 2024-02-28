@@ -142,6 +142,7 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
     /// For exactIn, `amount` is `amountIn`. For exactOut, `amount` is `-amountOut`
     function _swap(int256 amount, address recipient, bytes calldata path, address payer, bool isExactIn)
         private
+        virtual
         returns (int256 amount0Delta, int256 amount1Delta, bool zeroForOne)
     {
         (address tokenIn, uint24 fee, address tokenOut) = path.decodeFirstPool();
