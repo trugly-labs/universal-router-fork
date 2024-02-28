@@ -53,10 +53,11 @@ abstract contract Payments is PaymentsImmutables {
     }
 
     /// @notice Pays a proportion of the contract's ETH or ERC20 to a recipient
+    /// @dev Trugly modification consists of adding `override`
     /// @param token The token to pay (can be ETH using Constants.ETH)
     /// @param recipient The address that will receive payment
     /// @param bips Portion in bips of whole balance of the contract
-    function payPortion(address token, address recipient, uint256 bips) internal {
+    function payPortion(address token, address recipient, uint256 bips) internal override {
         if (bips == 0 || bips > FEE_BIPS_BASE) revert InvalidBips();
         if (token == Constants.ETH) {
             uint256 balance = address(this).balance;

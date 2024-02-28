@@ -122,7 +122,8 @@ abstract contract Dispatcher is NFTImmutables, Payments, V2SwapRouter, V3SwapRou
                             recipient := calldataload(add(inputs.offset, 0x20))
                             bips := calldataload(add(inputs.offset, 0x40))
                         }
-                        Payments.payPortion(token, map(recipient), bips);
+                        // @dev Trugly Modification consists of calling payPortion directly
+                        payPortion(token, map(recipient), bips);
                     } else {
                         // placeholder area for command 0x07
                         revert InvalidCommandType(command);
