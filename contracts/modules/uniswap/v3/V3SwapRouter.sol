@@ -79,7 +79,7 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
         uint256 amountOutMinimum,
         bytes calldata path,
         address payer
-    ) internal virtual {
+    ) internal {
         // use amountIn == Constants.CONTRACT_BALANCE as a flag to swap the entire balance of the contract
         if (amountIn == Constants.CONTRACT_BALANCE) {
             address tokenIn = path.decodeFirstToken();
@@ -126,7 +126,7 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
         uint256 amountInMaximum,
         bytes calldata path,
         address payer
-    ) internal virtual {
+    ) internal {
         maxAmountInCached = amountInMaximum;
         (int256 amount0Delta, int256 amount1Delta, bool zeroForOne) =
             _swap(-amountOut.toInt256(), recipient, path, payer, false);
