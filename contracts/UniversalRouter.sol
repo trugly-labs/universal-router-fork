@@ -3,14 +3,13 @@ pragma solidity ^0.8.17;
 
 // Command implementations
 import {Dispatcher} from './base/Dispatcher.sol';
-import {RewardsCollector} from './base/RewardsCollector.sol';
 import {RouterParameters} from './base/RouterImmutables.sol';
 import {PaymentsImmutables, PaymentsParameters} from './modules/PaymentsImmutables.sol';
 import {UniswapImmutables, UniswapParameters} from './modules/uniswap/UniswapImmutables.sol';
 import {Commands} from './libraries/Commands.sol';
 import {IUniversalRouter} from './interfaces/IUniversalRouter.sol';
 
-contract UniversalRouter is IUniversalRouter, Dispatcher, RewardsCollector {
+contract UniversalRouter is IUniversalRouter, Dispatcher {
     modifier checkDeadline(uint256 deadline) {
         if (block.timestamp > deadline) revert TransactionDeadlinePassed();
         _;
